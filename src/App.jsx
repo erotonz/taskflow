@@ -1,10 +1,33 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { useAuth } from './features/auth/AuthContext';
 import Login from './features/auth/Login';
+=======
+// App.jsx
+import { useState, useEffect } from 'react';
+>>>>>>> 3b83047746c138a056ad93b41f98afc4d82057a6
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 
+export default function App() {
+<<<<<<< HEAD
+  const { state: authState } = useAuth();
+
+  if (!authState.user) {
+    return <Login />;
+  }
+
+  return <Dashboard />;
+}
+
+import { useState, useEffect } from 'react';
+import { useAuth } from './features/auth/AuthContext';
+import Login from './features/auth/Login';
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
 export default function App() {
   const { state: authState } = useAuth();
 
@@ -57,3 +80,7 @@ function Dashboard() {
     </div>
   );
 }
+}
+=======
+}
+>>>>>>> 3b83047746c138a056ad93b41f98afc4d82057a6

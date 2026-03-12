@@ -1,43 +1,13 @@
 /* Header.module.css */
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  height: 60px;
-  background: #0a0a0a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-/* subtle noise texture overlay */
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* thin accent line at top */
-.header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #6ee7b7 30%, #3b82f6 70%, transparent);
-  opacity: 0.6;
-}
-
-/* ── Menu button ── */
+/* ...existing code... */
+.right { display: flex; align-items: center; gap: 1rem; }
+.userName { font-size: 0.9rem; opacity: 0.9; }
+.logoutBtn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+ color: white; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer;
+ font-size: 0.85rem; transition: background 0.2s; }
+.logoutBtn:hover { background: rgba(255,255,255,0.25); }
+/* ...existing code... */
 .menuBtn {
   display: flex;
   align-items: center;
@@ -150,6 +120,7 @@
 
 .header {
   animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+<<<<<<< HEAD
 }
 .right { display: flex; align-items: center; gap: 1rem; }
 .userName { font-size: 0.9rem; opacity: 0.9; }
@@ -157,3 +128,6 @@
  color: white; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer;
  font-size: 0.85rem; transition: background 0.2s; }
 .logoutBtn:hover { background: rgba(255,255,255,0.25); }
+=======
+}
+>>>>>>> 3b83047746c138a056ad93b41f98afc4d82057a6
