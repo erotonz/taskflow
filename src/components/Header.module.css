@@ -1,0 +1,153 @@
+/* Header.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 60px;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* subtle noise texture overlay */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* thin accent line at top */
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #6ee7b7 30%, #3b82f6 70%, transparent);
+  opacity: 0.6;
+}
+
+/* ── Menu button ── */
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.menuBtn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.menuBtn:active {
+  transform: scale(0.95);
+}
+
+/* ── Title ── */
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* animated gradient shimmer on hover */
+.title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #6ee7b7, #3b82f6, #a78bfa, #6ee7b7);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: shimmer 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.title:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes shimmer {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+/* ── Avatar ── */
+.avatar {
+  position: relative;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6ee7b7 0%, #3b82f6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 0 rgba(110, 231, 183, 0.4);
+}
+
+.avatar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2), 0 0 16px rgba(110, 231, 183, 0.15);
+}
+
+.avatar:active {
+  transform: scale(0.96);
+}
+
+/* ── Entrance animation ── */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
